@@ -8,12 +8,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 
-
 import com.anax.preference.Model.Country;
 import com.anax.preference.Preference.CountryPreferenceRepo;
 import com.anax.preference.Remote.ApiInterface;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -67,7 +67,12 @@ public class MainActivity extends AppCompatActivity {
     public void getCountriesCodeWithRx() {
         progressBar.setVisibility(View.VISIBLE);
 
-        countryPreferenceRepo.getListObservable()
+        countryPreferenceRepo.getListObservable().onErrorReturn(new Function<Throwable, List<Country>>() {
+            @Override
+            public List<Country> apply(Throwable throwable) throws Exception {
+                return Collections.emptyList();
+            }
+        })
                 .mergeWith(ApiInterface.Creator.newApiService().getCountryCodeObservable()
                         .map(new Function<List<Country>, List<Country>>() {
                             @Override
@@ -90,7 +95,8 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onError(Throwable e) {
-
+                        Log.d(LOG, "onError");
+                        Log.d(LOG, e.getMessage());
                     }
 
                     @Override

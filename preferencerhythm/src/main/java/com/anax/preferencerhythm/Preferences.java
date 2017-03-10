@@ -12,7 +12,7 @@ import java.util.List;
  * @since 27/01/2017
  */
 class Preferences {
-    private final String KEY_CHEKER = "TEST_ENCRYPTION_KEY";
+    private final String KEY_CHECKER = "TEST_ENCRYPTION_KEY";
 
     private SharedPreferences mPref;
     private Serializer serializer;
@@ -119,19 +119,19 @@ class Preferences {
         }
     }
 
-    public boolean isEmpty() {
+    boolean isEmpty() {
         return mPref.getAll().size() == 0;
     }
 
     private void saveEncryptionKeyTester() {
-        saveSingleObject(KEY_CHEKER, KEY_CHEKER);
+        saveSingleObject(KEY_CHECKER, KEY_CHECKER);
     }
 
     private String getEncryptionKeyTester() {
-        return getSingleObject(KEY_CHEKER, String.class);
+        return getSingleObject(KEY_CHECKER, String.class);
     }
 
     private boolean isEncryptionKeyChanged() {
-        return !getEncryptionKeyTester().equals(KEY_CHEKER);
+        return !getEncryptionKeyTester().equals(KEY_CHECKER);
     }
 }

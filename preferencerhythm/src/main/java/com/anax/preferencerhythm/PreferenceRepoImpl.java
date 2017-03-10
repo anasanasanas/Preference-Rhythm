@@ -2,6 +2,8 @@ package com.anax.preferencerhythm;
 
 import android.content.Context;
 
+import com.anax.preferencerhythm.exception.SharedPrefDataNotFoundException;
+
 import java.util.List;
 
 import io.reactivex.Observable;
@@ -49,7 +51,7 @@ public abstract class PreferenceRepoImpl<T> implements PreferenceRepo<T> {
     @Override
     public final Observable<List<T>> getListObservable() {
         if (preferences.getList(listKey, clazz) == null)
-            return Observable.empty();
+            return Observable.error(new SharedPrefDataNotFoundException());
         return Observable.just(preferences.getList(listKey, clazz));
     }
 
@@ -66,7 +68,7 @@ public abstract class PreferenceRepoImpl<T> implements PreferenceRepo<T> {
     @Override
     public final Observable<T> getObjectObservable() {
         if (preferences.getSingleObject(objectKey, clazz) == null)
-            return Observable.empty();
+            return Observable.error(new SharedPrefDataNotFoundException());
 
         return Observable.just(preferences.getSingleObject(objectKey, clazz));
     }
