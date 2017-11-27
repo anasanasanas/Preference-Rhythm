@@ -3,11 +3,12 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Preference-Rhythm.iml" filepath="$PROJECT_DIR$/Preference-Rhythm.iml" />
+      <module fileurl="file://C:\Users\anas\Documents\Preference-Rhythm\Preference-Rhythm.iml" filepath="C:\Users\anas\Documents\Preference-Rhythm\Preference-Rhythm.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/preference-rhythm.iml" filepath="$PROJECT_DIR$/preference-rhythm.iml" />
+      <module fileurl="file://C:\Users\anas\Documents\Preference-Rhythm\app\app.iml" filepath="C:\Users\anas\Documents\Preference-Rhythm\app\app.iml" />
+      <module fileurl="file://C:\Users\anas\Documents\Preference-Rhythm\preference-rhythm.iml" filepath="C:\Users\anas\Documents\Preference-Rhythm\preference-rhythm.iml" />
       <module fileurl="file://$PROJECT_DIR$/preferencerhythm/preferencerhythm.iml" filepath="$PROJECT_DIR$/preferencerhythm/preferencerhythm.iml" />
-      <module fileurl="file://$PROJECT_DIR$/preferencerhythm/preferencerhythm.iml" filepath="$PROJECT_DIR$/preferencerhythm/preferencerhythm.iml" />
+      <module fileurl="file://C:\Users\anas\Documents\Preference-Rhythm\preferencerhythm\preferencerhythm.iml" filepath="C:\Users\anas\Documents\Preference-Rhythm\preferencerhythm\preferencerhythm.iml" />
     </modules>
   </component>
 </project>

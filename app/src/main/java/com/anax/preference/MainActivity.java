@@ -15,9 +15,8 @@ import com.anax.preference.Remote.ApiInterface;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Function;
 
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.functions.Function;
 import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
 import retrofit2.Call;
@@ -67,43 +66,43 @@ public class MainActivity extends AppCompatActivity {
     public void getCountriesCodeWithRx() {
         progressBar.setVisibility(View.VISIBLE);
 
-        countryPreferenceRepo.getListObservable().onErrorReturn(new Function<Throwable, List<Country>>() {
-            @Override
-            public List<Country> apply(Throwable throwable) throws Exception {
-                return Collections.emptyList();
-            }
-        })
-                .mergeWith(ApiInterface.Creator.newApiService().getCountryCodeObservable()
-                        .map(new Function<List<Country>, List<Country>>() {
-                            @Override
-                            public List<Country> apply(List<Country> countries) throws Exception {
-                                Log.d(LOG, "Save new data in preference !");
-                                countryPreferenceRepo.saveList(countries);
-                                return countries;
-                            }
-                        }))
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new DisposableObserver<List<Country>>() {
-                    @Override
-                    public void onNext(List<Country> countriesList) {
-                        Log.d(LOG, "onNext");
-                        countries.clear();
-                        countries.addAll(countriesList);
-                        mAdapter.notifyDataSetChanged();
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.d(LOG, "onError");
-                        Log.d(LOG, e.getMessage());
-                    }
-
-                    @Override
-                    public void onComplete() {
-                        progressBar.setVisibility(View.GONE);
-                    }
-                });
+//        countryPreferenceRepo.getListObservable().onErrorReturn(new Function<Throwable, List<Country>>() {
+//            @Override
+//            public List<Country> apply(Throwable throwable) throws Exception {
+//                return Collections.emptyList();
+//            }
+//        })
+//                .mergeWith(ApiInterface.Creator.newApiService().getCountryCodeObservable()
+//                        .map(new Function<List<Country>, List<Country>>() {
+//                            @Override
+//                            public List<Country> apply(List<Country> countries) throws Exception {
+//                                Log.d(LOG, "Save new data in preference !");
+//                                countryPreferenceRepo.saveList(countries);
+//                                return countries;
+//                            }
+//                        }))
+//                .subscribeOn(Schedulers.newThread())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new DisposableObserver<List<Country>>() {
+//                    @Override
+//                    public void onNext(List<Country> countriesList) {
+//                        Log.d(LOG, "onNext");
+//                        countries.clear();
+//                        countries.addAll(countriesList);
+//                        mAdapter.notifyDataSetChanged();
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//                        Log.d(LOG, "onError");
+//                        Log.d(LOG, e.getMessage());
+//                    }
+//
+//                    @Override
+//                    public void onComplete() {
+//                        progressBar.setVisibility(View.GONE);
+//                    }
+//                });
     }
 
     public void getCountriesCode() {
