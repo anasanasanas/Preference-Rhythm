@@ -24,4 +24,9 @@ public class UserTokenPreferenceRepo extends PreferenceRepoImpl<String> {
     public String encryptionKey() {
         return "8N5zx1CUFyoE7Z3WuUq5SX14ziWKBJti";
     }
+
+    @Override
+    public String sharedPreferenceFileName() {
+        return null;
+    }
 }
