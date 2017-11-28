@@ -25,6 +25,8 @@ public abstract class PreferenceRepoImpl<T> implements PreferenceRepo<T> {
 
     public abstract String encryptionKey();
 
+    public abstract String sharedPreferenceFileName();
+
 
     public PreferenceRepoImpl(Context context, Class<T> clazz) {
         if (clazz == null)
@@ -32,7 +34,13 @@ public abstract class PreferenceRepoImpl<T> implements PreferenceRepo<T> {
         if (context == null)
             throw new IllegalArgumentException("Context can NOT be null");
 
-        String sharedPreferenceName = this.getClass().getSimpleName() + "SharedPreference";
+        String sharedPreferenceName;
+
+        if (sharedPreferenceFileName() == null)
+            sharedPreferenceName = this.getClass().getSimpleName() + "SharedPreference";
+        else
+            sharedPreferenceName = sharedPreferenceFileName();
+
         objectKey = this.getClass().getSimpleName() + "ObjectKey";
         listKey = this.getClass().getSimpleName() + "ListKey";
 
@@ -72,7 +80,6 @@ public abstract class PreferenceRepoImpl<T> implements PreferenceRepo<T> {
 
         return Observable.just(preferences.getSingleObject(objectKey, clazz));
     }
-
     @Override
     public final void saveObject(T t) {
         preferences.saveSingleObject(t, objectKey);
