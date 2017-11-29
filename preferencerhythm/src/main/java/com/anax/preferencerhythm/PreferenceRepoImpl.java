@@ -36,7 +36,9 @@ public abstract class PreferenceRepoImpl<T> implements PreferenceRepo<T> {
 
         String sharedPreferenceName;
 
-        if (sharedPreferenceFileName() == null)
+        if (sharedPreferenceFileName() == null ||
+                sharedPreferenceFileName().equals("") ||
+                sharedPreferenceFileName().replace(" ", "").length() == 0)
             sharedPreferenceName = this.getClass().getSimpleName() + "SharedPreference";
         else
             sharedPreferenceName = sharedPreferenceFileName();
