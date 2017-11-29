@@ -4,9 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Preference-Rhythm.iml" filepath="$PROJECT_DIR$/Preference-Rhythm.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/preference-rhythm.iml" filepath="$PROJECT_DIR$/preference-rhythm.iml" />
-      <module fileurl="file://$PROJECT_DIR$/preferencerhythm/preferencerhythm.iml" filepath="$PROJECT_DIR$/preferencerhythm/preferencerhythm.iml" />
       <module fileurl="file://$PROJECT_DIR$/preferencerhythm/preferencerhythm.iml" filepath="$PROJECT_DIR$/preferencerhythm/preferencerhythm.iml" />
     </modules>
   </component>
